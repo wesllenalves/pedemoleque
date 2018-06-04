@@ -1,0 +1,148 @@
+<?php
+
+
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = array();    
+}
+
+
+
+//adicionar produto
+if (isset($_GET['acao'])) {
+
+    //adicionar produto
+    if ($_GET['acao'] == 'add') {
+        $id = intval($_GET['id']);
+        if (!isset($_SESSION['carrinho'][$id])) {
+            $_SESSION['carrinho'][$id] = 1;
+        } else {
+            $_SESSION['carrinho'][$id] += 1;
+        }
+    }
+
+    //remover carinho
+    if ($_GET['acao'] == 'del') {
+        $id = intval($_GET['id']);
+        if (isset($_SESSION['carrinho'][$id])) {
+            session_destroy();
+            unset($_SESSION['carrinho'][$id]);
+        }
+    }
+
+    //atualizar carrinho
+    if(isset($_GET['acao']) == 'up'){
+        if(is_array(isset($_POST['prod']))){
+            foreach ($_POST['prod'] as $id => $qtd) {
+                $id = intval($id);
+                $qtd = intval($qtd);
+                if(!empty($qtd) || $qtd <> 0 ){
+                    $_SESSION['carrinho'][$id] = $qtd;
+                }else{
+                    unset($_SESSION['carrinho'][$id]);
+                }
+            }
+
+        }
+    }
+}
+?>
+
+<!-- section -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">                    
+                    <div class="col-md-6">                            
+                    </div>                   
+                    <div class="col-md-12">
+                        <div class="order-summary clearfix">
+                            <div class="section-title">
+                                <h3 class="title">Revisao do Carrinho</h3>
+                            </div>
+                            <form action="?acao=up" method="POST"> 
+                            <table class="shopping-cart-table table">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th></th>
+                                        <th class="text-center">Preço</th>
+                                        <th class="text-center">Quantidade</th>
+                                        <th class="text-center">Total</th>
+                                        <th class="text-right"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                                    if (count($_SESSION['carrinho']) == 0) {
+
+                                        echo '<tr><td>Não há produto No carrinho</td></tr>';
+                                    } else {
+
+
+                                        foreach ($_SESSION['carrinho'] as $id => $qtd) {
+
+
+                                            $sql = "SELECT * FROM produto as p JOIN fornecedor as f ON p.FKFornecedor = f.  codigoFornecedor WHERE codigoProduto = ' $id'";
+                                            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                            $exibe = mysqli_fetch_assoc($query);
+
+                                            $codigo = $exibe['codigoProduto'];
+                                            $nomeProduto = $exibe['nomeProduto'];
+                                            $qtdEstoque = $exibe['qtdEstoque'];
+                                            $valor = $exibe['valor'];
+                                            $foto = $exibe['fotoProduto'];
+                                            $sub = $exibe['valor'] * $qtd;
+
+
+
+                                            echo '<tr>
+                <td class="thumb"><img src="./img/' . $foto . '" alt="" width="100" height="80"></td>
+                <td class="details">
+                        <a href="#">' . $nomeProduto . '</a>											
+                </td>
+                <td class="price text-center"><strong>R$: ' . $valor . '</strong><br><del class="font-weak"><small>R$: 500.00</small></del></td>
+                <td class="qty text-center"><input class="input" type="number" name="prod[' . $id . ']" value="' . $qtd . '" ></td>
+                <td class="total text-center"><strong class="primary-color">R$: ' . $sub . '</strong></td>
+                <td class="text-right"><a href="?acao=del&id=' . $id . '"><i class="fa fa-close"></i></a></td>
+            </tr>
+            </tbody>';
+                                
+            
+                                        }
+                                    }
+                                    ?>
+                            <tfoot>
+                                    <tr>
+                                        <th class="empty" colspan="4"></th>
+                                        <th colspan="2" class"text-center"><input  class="btn btn-primary" type="submit" value="Atualizar carrinho"> </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="empty" colspan="3"></th>
+                                        <th>SUBTOTAL</th>
+                                        <th colspan="2" class="sub-total">---</th>
+                                    </tr>                                    
+                                    <tr>
+                                        <th class="empty" colspan="3"></th>
+                                        <th>TOTAL</th>
+                                        <th colspan="2" class="total">---</th>
+                                    </tr>
+                                    
+                            </tfoot>
+                            </table>
+                               </form>
+                            <div class="pull-right">
+                                <a href="index.php"><button class="primary-btn">Voltar as Compras</button></a>
+                                <a href="#comprar.php"><button class="primary-btn">Finalizar as compras</button></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /section -->

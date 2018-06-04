@@ -1,0 +1,57 @@
+<?php
+
+?>
+<!--Conteudo -->
+        <div class="container">
+            <div class="row">
+
+                <div id="formulariologin">
+                    <div class="col-md-5 col-md-offset-3">
+                        <div class="wrapper">
+                            <?php
+                            $this->alerta();                     
+                            ?>
+                                
+                            <form action="<?=base_url('')?>/index/login/verificar" method="POST"  class="form-signin">                     
+
+                                <hr class="spartan">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon1">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="email" class="form-control" name="email" placeholder="E-mail" required="" autofocus="" />
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon1">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" name="senha" placeholder="senha" />         	  
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block"  name="fazerLog" value="Entrar" type="Submit">Entrar</button>  			
+                            </form>			
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Conteudo -->
+        <!-- section -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+
+
+                    <!-- MAIN -->
+                    <div id="main" class="col-md-12">
+
+
+                    </div>
+                    <!-- /MAIN -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /section -->

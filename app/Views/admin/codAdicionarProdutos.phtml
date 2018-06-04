@@ -1,0 +1,31 @@
+<?php
+require_once 'conexao.php';
+
+if (isset($_POST['Cadastrar']) ){
+    $nomeProduto = $_POST['nomeProduto'];
+    $descricaoProduto = $_POST['descricaoProduto'];
+    $quantidadeProduto = $_POST['quantidadeProduto'];
+    $valor = $_POST['valor'];
+     $imagemProduto = $_POST['imagemProduto'];
+    $nomeFornecedor = $_POST['nomeFornecedor'];
+    $cnpjFornecedor = $_POST['cnpjFornecedor'];
+    $telefoneFornecedor = $_POST['telefoneFornecedor'];
+    $emailFornecedor = $_POST['emailFornecedor'];
+    
+    
+    
+    mysqli_query($conn, "INSERT INTO fornecedor (cnpj, nomeFornecedor, telefone, email) VALUES ('$cnpjFornecedor', '$nomeFornecedor', '$telefoneFornecedor', '$emailFornecedor')");
+   
+    $id = mysqli_insert_id($conn);   
+    
+    $sql1 = "INSERT INTO produto(nomeProduto, descricaoProduto, qtdEstoque, valor, fotoProduto, FKFornecedor) values ('$nomeProduto', '$descricaoProduto', '$quantidadeProduto', '$valor', '$imagemProduto', '$id')";
+    $query1 = mysqli_query($conn, $sql1) or die(mysqli_error($conn));    
+    
+    print_r($sql1);
+    if($query1){
+        session_start();
+        $_SESSION['success'] = "cadastrado com sucesso";
+        header("Location: produtos.php");
+    }
+    
+}

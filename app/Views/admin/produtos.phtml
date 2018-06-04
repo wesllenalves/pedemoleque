@@ -1,0 +1,105 @@
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-6 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">Listar Produtos</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Produtos</li>
+                </ol>
+            </div>
+            <?php
+            $this->alerta();
+            ?>
+            <div class="col-md-6 col-4 align-self-center">
+                <a href="<?= base_url('') ?>/admin/cadastro/produto" class="btn pull-right hidden-sm-down btn-success"> Adicionar Produtos</a>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-md-12">
+                <div class="card">                    
+
+
+                    <div class="card-block">
+                        <h4 class="card-title">Basic Table</h4>                                
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome do Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor do Produto</th>
+                                        <th>Fornecedor</th>
+                                        <th>CNP do Fornecedor</th>
+                                        <th>Telefone do Fornecedor</th>
+                                        <th>E-mail do Fornecedor</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($this->view->Produtos as $produto) {
+                                        $codigo = $produto['id'];
+                                        $nomeProduto = $produto['nomeProduto'];
+                                        $qtdEstoque = $produto['qtdEstoque'];
+                                        $valor = $produto['valor'];
+                                        $nomeFornecedor = $produto['fornecedor']['nomeFornecedor'];
+                                        $cnpj = $produto['fornecedor']['cnpj'];
+                                        $telefone = $produto['fornecedor']['telefone'];
+                                        $email = $produto['fornecedor']['email'];
+                                        echo '<tr>
+                                                <td>' . $codigo . '</td>
+                                                <td>' . $nomeProduto . '</td>
+                                                <td>' . $qtdEstoque . '</td>
+                                                <td>' . $valor . '</td>
+                                                <td>' . $nomeFornecedor . '</td>
+                                                <td>' . $cnpj . '</td>
+                                                <td>' . $telefone . '</td>
+                                                <td>' . $email . '</td>
+                                                    <td><a href='.base_url('').'/admin/produtos/editar?id='.$codigo.'>Editar<a> <a href='.base_url('').'/admin/produtos/remover?id='.$codigo.'>Remover<a></td>
+                                            </tr>'
+                                            ;
+                                    }
+                                    ?>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        © 2017 Monster Admin by wrappixel.com
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>

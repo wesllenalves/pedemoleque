@@ -1,0 +1,136 @@
+<?php
+if (isset($_GET['sair']) == 'sim') {
+    session_destroy();
+    session_unset();
+     header("Location:" . base_url("") . "/index");
+}
+
+//if(($_SESSION["tipoUsuario"]) <> "comun"){
+//    header("Location:" . base_url("") . "/index");
+//    exit();
+//}
+//$sql = "SELECT * FROM Cliente as c JOIN Endereco as e ON c.codigoCliente = e.codigoEndereco WHERE codigoCliente =" . $_SESSION["id"];
+//$query = mysqli_query($conn, $sql);
+?>
+
+
+
+<!--Conteudo -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div id="formularioeditar">
+                <div class="row">
+                    <!-- STORE -->
+                    <div id="store">
+                        <!-- row -->
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+                <?php
+                ?>
+                <form action="editar.php" method="POST">
+                    <div class="row">
+<?php
+if (isset($_SESSION['erro'])) {
+    ?>
+                            <p id="alerta" class="text-center alert alert-danger"><?= $_SESSION['erro'] ?></p> 
+                            <?php
+                            unset($_SESSION['erro']);
+                        }
+                        ?>
+                        <?php
+                        if (isset($_SESSION['success'])) {
+                            ?>
+                            <p id="alerta" class="text-center alert alert-success"><?= $_SESSION['success'] ?></p> 
+                            <?php
+                            unset($_SESSION['success']);
+                        }
+                        ?>
+                        <?php
+//                            print_r($this->clientes[0]);
+                        foreach ($this->clientes as $exibe) { // Obtém os dados da linha atual e avança para o próximo registro
+                            ?>
+                            <div class="form-group col-md-5">
+                                <label for="disabledTextInput">Nome Completo</label>
+                                <input id="disabledTextInput" type="text" class="form-control" name="nome"  value="<?= $exibe['nomeCliente']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="InputEmail">E-mail</label>
+                                <input type="email" class="form-control" name="email" id="email" value="<?= $exibe['email']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="InputSenha">Senha</label>
+                                <input type="password" class="form-control" name="senha" id="senha" value="000000000000000" placeholder="Digite o valor" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="InputCPF">CPF</label>
+                                <input type="number" class="form-control" name="cpf" id="cpf" value="<?= $exibe['cpf']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="InputCelular">Celular</label>
+                                <input type="celular" class="form-control" name="celular" id="celular" value="<?= $exibe['celular']; ?>" placeholder="Digite o valor" disabled>
+                            </div>                                
+                            <div class="form-group col-md-2">
+                                <label for="InputNumero">Numero</label>
+                                <input type="number" class="form-control" name="numero" id="numero" value="<?= $exibe['endereco']['numero']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="InputComplemento">Complemento</label>
+                                <input type="text" class="form-control" name="complemento" id="complemento" value="<?= $exibe['endereco']['complemento']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="InputBairro">Bairro</label>
+                                <input type="text" class="form-control" name="bairro" id="bairro" value="<?= $exibe['endereco']['bairro']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="InputCidade">Cidade</label>
+                                <input type="text" class="form-control" name="cidade" id="cidade" value="<?= $exibe['endereco']['cidade']; ?>" placeholder="Digite o valor" disabled>
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label for="InputUF">UF</label>
+                                <input type="text" class="form-control" value="<?= $exibe['endereco']['estado']; ?>" name="uf" id="uf" disabled>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="InputCEP">CEP</label>
+                                <input type="number" class="form-control"  value="<?= $exibe['endereco']['cep']; ?>" name="cep" id="cep" disabled>
+                            </div>
+<?php } ?>
+                    </div>                          
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" name="editar" class="btn btn-primary">Editar</button>
+                            <a href="index.php" class="btn btn-default">Cancelar</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">                    
+            <div class="row">
+                <!-- STORE -->
+                <div id="store">
+                    <!-- row -->
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Conteudo -->
+
