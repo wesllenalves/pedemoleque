@@ -1,19 +1,3 @@
-<?php
-if (isset($_GET['sair']) == 'sim') {
-    session_destroy();
-    session_unset();
-     header("Location:" . base_url("") . "/index");
-}
-
-//if(($_SESSION["tipoUsuario"]) <> "comun"){
-//    header("Location:" . base_url("") . "/index");
-//    exit();
-//}
-//$sql = "SELECT * FROM Cliente as c JOIN Endereco as e ON c.codigoCliente = e.codigoEndereco WHERE codigoCliente =" . $_SESSION["id"];
-//$query = mysqli_query($conn, $sql);
-?>
-
-
 
 <!--Conteudo -->
 <div class="container">
@@ -33,24 +17,13 @@ if (isset($_GET['sair']) == 'sim') {
                 <form action="editar.php" method="POST">
                     <div class="row">
 <?php
-if (isset($_SESSION['erro'])) {
-    ?>
-                            <p id="alerta" class="text-center alert alert-danger"><?= $_SESSION['erro'] ?></p> 
-                            <?php
-                            unset($_SESSION['erro']);
-                        }
-                        ?>
-                        <?php
-                        if (isset($_SESSION['success'])) {
-                            ?>
-                            <p id="alerta" class="text-center alert alert-success"><?= $_SESSION['success'] ?></p> 
-                            <?php
-                            unset($_SESSION['success']);
-                        }
-                        ?>
-                        <?php
-//                            print_r($this->clientes[0]);
-                        foreach ($this->clientes as $exibe) { // Obtém os dados da linha atual e avança para o próximo registro
+//$this->alerta();
+                       
+             
+
+                        foreach ($this->view->Clientes as $exibe) { // Obtém os dados da linha atual e avança para o próximo registro
+                             
+                            
                             ?>
                             <div class="form-group col-md-5">
                                 <label for="disabledTextInput">Nome Completo</label>
@@ -94,7 +67,7 @@ if (isset($_SESSION['erro'])) {
                                 <label for="InputCidade">Cidade</label>
                                 <input type="text" class="form-control" name="cidade" id="cidade" value="<?= $exibe['endereco']['cidade']; ?>" placeholder="Digite o valor" disabled>
                             </div>
-                            <div class="form-group col-md-1">
+                            <div class="form-group col-md-2">
                                 <label for="InputUF">UF</label>
                                 <input type="text" class="form-control" value="<?= $exibe['endereco']['estado']; ?>" name="uf" id="uf" disabled>
                             </div>
@@ -102,12 +75,15 @@ if (isset($_SESSION['erro'])) {
                                 <label for="InputCEP">CEP</label>
                                 <input type="number" class="form-control"  value="<?= $exibe['endereco']['cep']; ?>" name="cep" id="cep" disabled>
                             </div>
-<?php } ?>
+                            <?php } ?>
                     </div>                          
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="submit" name="editar" class="btn btn-primary">Editar</button>
+                            <!--<button type="submit" name="editar" class="btn btn-primary">Editar</button>-->
+                            
+                            <a type="button" href="<?php base_url("")?>/cliente/minhaconta/editar" class="btn btn-primary">Editar Conta</a>
+                            <a href="<?php base_url("")?>/cliente/minhaconta/deletar?id=<?= $_SESSION['id']?>" class="btn btn-danger">Apagar Conta</a>
                             <a href="index.php" class="btn btn-default">Cancelar</a>
                         </div>
                     </div>

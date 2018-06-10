@@ -53,10 +53,8 @@ class Cliente extends EloquentModel {
 
     //Verifica se ja existe usuarios com os dados de email e cpf cadastrados
     public static function ExitsUser(array $array) {
-        $dadosUser = Cliente::all()->where('email', '=', $array['email'])->where('cpf', '=', $array['cpf']);
-
+        $dadosUser = Cliente::where('email', '=', $array['email'])->where('cpf', '=', $array['cpf']);        
         if (count($dadosUser) > 0) {
-
             return TRUE;
         }
         return FALSE;
@@ -77,6 +75,9 @@ class Cliente extends EloquentModel {
     public static function autentication(array $array) {
                 
         $dadosUser = Cliente::where('email', '=', $array['email'])->where('senha', '=', Funcoes::base64($array['senha'], 1))->first();
+        
+        if($dadosUser){
+        
         if (count($dadosUser) > 0) {
             
             $salt = $dadosUser['salt'];
@@ -96,6 +97,12 @@ class Cliente extends EloquentModel {
         $id = $tentativas['id'];
         Loginatteempt::RegistraTentativa($id);
         return FALSE;
-    }
+    }else {
+        return FALSE;
+    
+            }
+
+
+}
 
 }

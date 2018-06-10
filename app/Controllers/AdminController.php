@@ -153,5 +153,12 @@ class AdminController extends BaseController {
             $this->redirect('dashboard/listar/clientes', '4', 'Erro ao tentar deletar cadastro');
         }
     }
+    
+    public function logout(){
+            session_start();
+            session_destroy();
+            session_unset();
+            $this->redirect('index');
+    }
 
 }

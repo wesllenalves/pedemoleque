@@ -82,14 +82,15 @@ class BaseController {
                 }
                 echo '</div></div>
                 </div>';
+                unset($_SESSION['danger']);
             } else {
                 echo $_SESSION['danger'].'</div></div>
                 </div>';
-            }
-           
+                unset($_SESSION['danger']);
+            }        
             
                       
-                unset($_SESSION['danger']);
+                
         }
     }
 
