@@ -29,8 +29,7 @@ use App\Models\Home\Produtos;
                                 </thead>
                                 <tbody>
 
-                                    <?php
-                                    //require_once __DIR__.'/../../Models/Home/Produtos.php';
+                                    <?php                                    
                                     if (count($_SESSION['carrinho']) == 0) {
 
                                         echo '<tr><td>Não há produto No carrinho</td></tr>';
@@ -47,7 +46,11 @@ use App\Models\Home\Produtos;
                                             $qtdEstoque = $dado[0]['qtdEstoque'];
                                             $valor = $dado[0]['valor'];
                                             $foto = $dado[0]['fotoProduto'];
-                                            $sub = $dado[0]['valor'] * $qtd;  
+                                            $sub = $dado[0]['valor'] * $qtd;
+                                             $subTotals = $sub;
+                                             
+                                           
+                                            
 
                                             echo '<tr>
                 <td class="thumb"><img id="foto-checkout" src="' .base_url('/public/img/produtos/'). $foto . '" alt="" width="100" height="80" style="width: 110px; height: 90px; "></td>
@@ -63,7 +66,9 @@ use App\Models\Home\Produtos;
                                 
 //            }
                                         }
-                                    }
+                                       
+                                        print_r($_SESSION['total']); 
+}
                                     ?>
                             <tfoot>
                                     <tr>
@@ -78,7 +83,7 @@ use App\Models\Home\Produtos;
                                     <tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>TOTAL</th>
-                                        <th colspan="2" class="total">---</th>
+                                        <th colspan="2" class="total"><?=$total?></th>
                                     </tr>
                                     
                             </tfoot>

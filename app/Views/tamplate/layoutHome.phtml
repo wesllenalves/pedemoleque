@@ -108,76 +108,76 @@ if (isset($_GET['acao'])) {
         <!-- Adicionando JQuery -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
-        <!--         Consultar CEP 
-                <script type="text/javascript" src="<?= base_url("") ?>/public/Home/js/consultarCEP.js"></script>
-                 Adicionando Javascript 
-                <script type="text/javascript" >
-        
-                    $(document).ready(function () {
-        
-                        function limpa_formulário_cep() {
-                            // Limpa valores do formulário de cep.
-                            $("#rua").val("");
-                            $("#bairro").val("");
-                            $("#cidade").val("");
-                            $("#uf").val("");
-                            $("#ibge").val("");
-                        }
-        
-                        //Quando o campo cep perde o foco.
-                        $("#cep").blur(function () {
-        
-                            //Nova variável "cep" somente com dígitos.
-                            var cep = $(this).val().replace(/\D/g, '');
-        
-                            //Verifica se campo cep possui valor informado.
-                            if (cep != "") {
-        
-                                //Expressão regular para validar o CEP.
-                                var validacep = /^[0-9]{8}$/;
-        
-                                //Valida o formato do CEP.
-                                if (validacep.test(cep)) {
-        
-                                    //Preenche os campos com "..." enquanto consulta webservice.
-                                    $("#rua").val("...");
-                                    $("#bairro").val("...");
-                                    $("#cidade").val("...");
-                                    $("#uf").val("...");
-                                    $("#ibge").val("...");
-        
-                                    //Consulta o webservice viacep.com.br/
-                                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
-        
-                                        if (!("erro" in dados)) {
-                                            //Atualiza os campos com os valores da consulta.
-                                            $("#rua").val(dados.logradouro);
-                                            $("#bairro").val(dados.bairro);
-                                            $("#cidade").val(dados.localidade);
-                                            $("#uf").val(dados.uf);
-                                            $("#ibge").val(dados.ibge);
-                                        } //end if.
-                                        else {
-                                            //CEP pesquisado não foi encontrado.
-                                            limpa_formulário_cep();
-                                            alert("CEP não encontrado.");
-                                        }
-                                    });
+        <!--         Consultar CEP -->
+        <script type="text/javascript" src="<?= base_url("") ?>/public/Home/js/consultarCEP.js"></script>
+        <!--  Adicionando Javascript -->
+        <script type="text/javascript" >
+
+            $(document).ready(function () {
+
+                function limpa_formulário_cep() {
+                    // Limpa valores do formulário de cep.
+                    $("#rua").val("");
+                    $("#bairro").val("");
+                    $("#cidade").val("");
+                    $("#uf").val("");
+                    $("#ibge").val("");
+                }
+
+                //Quando o campo cep perde o foco.
+                $("#cep").blur(function () {
+
+                    //Nova variável "cep" somente com dígitos.
+                    var cep = $(this).val().replace(/\D/g, '');
+
+                    //Verifica se campo cep possui valor informado.
+                    if (cep != "") {
+
+                        //Expressão regular para validar o CEP.
+                        var validacep = /^[0-9]{8}$/;
+
+                        //Valida o formato do CEP.
+                        if (validacep.test(cep)) {
+
+                            //Preenche os campos com "..." enquanto consulta webservice.
+                            $("#rua").val("...");
+                            $("#bairro").val("...");
+                            $("#cidade").val("...");
+                            $("#uf").val("...");
+                            $("#ibge").val("...");
+
+                            //Consulta o webservice viacep.com.br/
+                            $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                                if (!("erro" in dados)) {
+                                    //Atualiza os campos com os valores da consulta.
+                                    $("#rua").val(dados.logradouro);
+                                    $("#bairro").val(dados.bairro);
+                                    $("#cidade").val(dados.localidade);
+                                    $("#uf").val(dados.uf);
+                                    $("#ibge").val(dados.ibge);
                                 } //end if.
                                 else {
-                                    //cep é inválido.
+                                    //CEP pesquisado não foi encontrado.
                                     limpa_formulário_cep();
-                                    alert("Formato de CEP inválido.");
+                                    alert("CEP não encontrado.");
                                 }
-                            } //end if.
-                            else {
-                                //cep sem valor, limpa formulário.
-                                limpa_formulário_cep();
-                            }
-                        });
-                    });
-        
-                </script>        -->
+                            });
+                        } //end if.
+                        else {
+                            //cep é inválido.
+                            limpa_formulário_cep();
+                            alert("Formato de CEP inválido.");
+                        }
+                    } //end if.
+                    else {
+                        //cep sem valor, limpa formulário.
+                        limpa_formulário_cep();
+                    }
+                });
+            });
+
+        </script>       
 
     </head>
 
@@ -205,7 +205,7 @@ if (isset($_GET['acao'])) {
                                     <div class="header-btns-icon">
                                         <i class="fa fa-user-o"></i>
                                     </div>
-<?php if (isset($_SESSION['logado']) == "sim") { ?>
+                                    <?php if (isset($_SESSION['logado']) == "sim") { ?>
                                         <strong class="text-uppercase">Minha Conta <i class="fa fa-caret-down"></i></strong>
 
                                     </div>
@@ -264,49 +264,63 @@ if (isset($_GET['acao'])) {
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <div class="header-btns-icon">
                                             <i class="fa fa-shopping-cart"></i>
-    <?php $quantidade = count($_SESSION['carrinho']); ?>
+                                            <?php $quantidade = count($_SESSION['carrinho']); ?>
                                             <span class="qty"><?= $quantidade ?></span>
                                         </div>
                                         <strong class="text-uppercase">My Cart:</strong>
                                         <br>
-                                        <span>35.20$</span>
-                                    </a>
-                                    <div class="custom-menu">
-                                        <div id="shopping-cart">
-                                            <div class="shopping-cart-list">                                    
-                                                <div class="shopping-cart-btns">
-                                                    <?php
-                                                    foreach ($_SESSION['carrinho'] as $id => $qtd) {
+                                        <?php
+//                                        foreach ($_SESSION['carrinho'] as $id => $qtd) {
+//
+//                                            $dados = Produtos::with('Fornecedor')->where("id", "=", $id)->get();
+//                                            $dado = $dados->toArray();
+//
+//                                            $sub = $dado[0]['valor'] * $qtd;
+//                                            
+//                                            echo'<span> R$: '.$sub.'</span>';
+//                                        }
+//                                        ?>
+                                        </a>
+                                        <div class = "custom-menu">
+                                        <div id = "shopping-cart">
+                                        <div class = "shopping-cart-list">
+                                        <div class = "shopping-cart-btns">
+                                        <?php
+                                        foreach ($_SESSION['carrinho'] as $id => $qtd) {
 
-                                                        $dados = Produtos::with('Fornecedor')->where("id", "=", $id)->get();
-                                                        $dado = $dados->toArray();
-                                                        $codigo = $dado[0]['id'];
-                                                        $nomeProduto = $dado[0]['nomeProduto'];
-                                                        $qtdEstoque = $dado[0]['qtdEstoque'];
-                                                        $valor = $dado[0]['valor'];
-                                                        $foto = $dado[0]['fotoProduto'];
-                                                        $sub = $dado[0]['valor'] * $qtd;
+                                        $dados = Produtos::with('Fornecedor')->where("id", "=", $id)->get();
+                                        $dado = $dados->toArray();
+                                        $codigo = $dado[0]['id'];
+                                        $nomeProduto = $dado[0]['nomeProduto'];
+                                        $qtdEstoque = $dado[0]['qtdEstoque'];
+                                        $valor = $dado[0]['valor'];
+                                        $foto = $dado[0]['fotoProduto'];
+                                        $sub = $dado[0]['valor'] * $qtd;
+                                        $total = $sub;
 
-                                                        echo '<div class="product product-widget">
+                                        echo '<div class="product product-widget">
             <div class="product-thumb">
               <img src="' . base_url('/public/img/produtos/') . $foto . '" alt="" width="100" height="50">
              </div>
             <div class="product-body">
                 <h3 class="product-price">R$: ' . $valor . '<span class="qty"></span></h3>
                 <h2 class="product-name"><a href="#">' . $nomeProduto . '</a></h2>
+                <h2 class="product-name">QTD: <a href="#">' . $qtd . '</a></h2>
                  </div>
                 <button class="cancel-btn"><a href="?acao=del&id=' . $id . '"><i class="fa fa-trash"></i></a></button>
-                </div>                
-                 ';
-                                                    }
-                                                    ?>
-                                                    <button class="main-btn">View Cart</button>
-                                                    <a href="checkout.php"><button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button></a>
-                                                </div>
-                                                <?php
-                                            }
-                                            ?>
-                                        </div>
+                </div>' ;               
+                 }
+                                    
+                                    
+                                 echo '<button class="main-btn">Total <span> R$: '.$total.'</span></button>';
+        ?>
+                                    <a href="<?php base_url('')?>/index/checkout"><button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button></a>
+                                    </div>
+                                    <?php
+                                }
+                                
+                                ?>
+                                    </div>
                                     </div>
                             </li>
                             <!-- /Cart -->
@@ -347,7 +361,7 @@ if (isset($_GET['acao'])) {
         <!-- /NAVIGATION -->
 
         <!--Conteudo-->
-<?php $this->content() ?>
+    <?php $this->content() ?>
         <!--Fim Conteudo-->        
         <!-- FOOTER -->
         <footer id="footer" class="section section-grey">
