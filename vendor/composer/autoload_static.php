@@ -28,10 +28,6 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Inflector\\' => 26,
-        ),
         'C' => 
         array (
             'Core\\' => 5,
@@ -75,10 +71,6 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
         'Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/core',
@@ -91,6 +83,16 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
 
     public static $fallbackDirsPsr4 = array (
         0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
+    public static $prefixesPsr0 = array (
+        'D' => 
+        array (
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -125,19 +127,15 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Core\\Session1' => __DIR__ . '/../..' . '/core/Session_.php',
         'Core\\Validator' => __DIR__ . '/../..' . '/core/Validator.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
-        'Illuminate\\Container\\BindingResolutionException' => __DIR__ . '/..' . '/illuminate/container/BindingResolutionException.php',
         'Illuminate\\Container\\Container' => __DIR__ . '/..' . '/illuminate/container/Container.php',
         'Illuminate\\Container\\ContextualBindingBuilder' => __DIR__ . '/..' . '/illuminate/container/ContextualBindingBuilder.php',
         'Illuminate\\Contracts\\Auth\\Authenticatable' => __DIR__ . '/..' . '/illuminate/contracts/Auth/Authenticatable.php',
         'Illuminate\\Contracts\\Auth\\CanResetPassword' => __DIR__ . '/..' . '/illuminate/contracts/Auth/CanResetPassword.php',
         'Illuminate\\Contracts\\Auth\\Guard' => __DIR__ . '/..' . '/illuminate/contracts/Auth/Guard.php',
         'Illuminate\\Contracts\\Auth\\PasswordBroker' => __DIR__ . '/..' . '/illuminate/contracts/Auth/PasswordBroker.php',
-        'Illuminate\\Contracts\\Auth\\Registrar' => __DIR__ . '/..' . '/illuminate/contracts/Auth/Registrar.php',
         'Illuminate\\Contracts\\Auth\\UserProvider' => __DIR__ . '/..' . '/illuminate/contracts/Auth/UserProvider.php',
         'Illuminate\\Contracts\\Bus\\Dispatcher' => __DIR__ . '/..' . '/illuminate/contracts/Bus/Dispatcher.php',
-        'Illuminate\\Contracts\\Bus\\HandlerResolver' => __DIR__ . '/..' . '/illuminate/contracts/Bus/HandlerResolver.php',
         'Illuminate\\Contracts\\Bus\\QueueingDispatcher' => __DIR__ . '/..' . '/illuminate/contracts/Bus/QueueingDispatcher.php',
-        'Illuminate\\Contracts\\Bus\\SelfHandling' => __DIR__ . '/..' . '/illuminate/contracts/Bus/SelfHandling.php',
         'Illuminate\\Contracts\\Cache\\Factory' => __DIR__ . '/..' . '/illuminate/contracts/Cache/Factory.php',
         'Illuminate\\Contracts\\Cache\\Repository' => __DIR__ . '/..' . '/illuminate/contracts/Cache/Repository.php',
         'Illuminate\\Contracts\\Cache\\Store' => __DIR__ . '/..' . '/illuminate/contracts/Cache/Store.php',
@@ -165,7 +163,6 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Contracts\\Mail\\Mailer' => __DIR__ . '/..' . '/illuminate/contracts/Mail/Mailer.php',
         'Illuminate\\Contracts\\Pagination\\LengthAwarePaginator' => __DIR__ . '/..' . '/illuminate/contracts/Pagination/LengthAwarePaginator.php',
         'Illuminate\\Contracts\\Pagination\\Paginator' => __DIR__ . '/..' . '/illuminate/contracts/Pagination/Paginator.php',
-        'Illuminate\\Contracts\\Pagination\\Presenter' => __DIR__ . '/..' . '/illuminate/contracts/Pagination/Presenter.php',
         'Illuminate\\Contracts\\Pipeline\\Hub' => __DIR__ . '/..' . '/illuminate/contracts/Pipeline/Hub.php',
         'Illuminate\\Contracts\\Pipeline\\Pipeline' => __DIR__ . '/..' . '/illuminate/contracts/Pipeline/Pipeline.php',
         'Illuminate\\Contracts\\Queue\\EntityNotFoundException' => __DIR__ . '/..' . '/illuminate/contracts/Queue/EntityNotFoundException.php',
@@ -175,12 +172,8 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Contracts\\Queue\\Monitor' => __DIR__ . '/..' . '/illuminate/contracts/Queue/Monitor.php',
         'Illuminate\\Contracts\\Queue\\Queue' => __DIR__ . '/..' . '/illuminate/contracts/Queue/Queue.php',
         'Illuminate\\Contracts\\Queue\\QueueableEntity' => __DIR__ . '/..' . '/illuminate/contracts/Queue/QueueableEntity.php',
-        'Illuminate\\Contracts\\Queue\\ShouldBeQueued' => __DIR__ . '/..' . '/illuminate/contracts/Queue/ShouldBeQueued.php',
-        'Illuminate\\Contracts\\Redis\\Database' => __DIR__ . '/..' . '/illuminate/contracts/Redis/Database.php',
-        'Illuminate\\Contracts\\Routing\\Middleware' => __DIR__ . '/..' . '/illuminate/contracts/Routing/Middleware.php',
         'Illuminate\\Contracts\\Routing\\Registrar' => __DIR__ . '/..' . '/illuminate/contracts/Routing/Registrar.php',
         'Illuminate\\Contracts\\Routing\\ResponseFactory' => __DIR__ . '/..' . '/illuminate/contracts/Routing/ResponseFactory.php',
-        'Illuminate\\Contracts\\Routing\\TerminableMiddleware' => __DIR__ . '/..' . '/illuminate/contracts/Routing/TerminableMiddleware.php',
         'Illuminate\\Contracts\\Routing\\UrlGenerator' => __DIR__ . '/..' . '/illuminate/contracts/Routing/UrlGenerator.php',
         'Illuminate\\Contracts\\Routing\\UrlRoutable' => __DIR__ . '/..' . '/illuminate/contracts/Routing/UrlRoutable.php',
         'Illuminate\\Contracts\\Support\\Arrayable' => __DIR__ . '/..' . '/illuminate/contracts/Support/Arrayable.php',
@@ -189,9 +182,7 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Contracts\\Support\\MessageProvider' => __DIR__ . '/..' . '/illuminate/contracts/Support/MessageProvider.php',
         'Illuminate\\Contracts\\Support\\Renderable' => __DIR__ . '/..' . '/illuminate/contracts/Support/Renderable.php',
         'Illuminate\\Contracts\\Validation\\Factory' => __DIR__ . '/..' . '/illuminate/contracts/Validation/Factory.php',
-        'Illuminate\\Contracts\\Validation\\UnauthorizedException' => __DIR__ . '/..' . '/illuminate/contracts/Validation/UnauthorizedException.php',
         'Illuminate\\Contracts\\Validation\\ValidatesWhenResolved' => __DIR__ . '/..' . '/illuminate/contracts/Validation/ValidatesWhenResolved.php',
-        'Illuminate\\Contracts\\Validation\\ValidationException' => __DIR__ . '/..' . '/illuminate/contracts/Validation/ValidationException.php',
         'Illuminate\\Contracts\\Validation\\Validator' => __DIR__ . '/..' . '/illuminate/contracts/Validation/Validator.php',
         'Illuminate\\Contracts\\View\\Factory' => __DIR__ . '/..' . '/illuminate/contracts/View/Factory.php',
         'Illuminate\\Contracts\\View\\View' => __DIR__ . '/..' . '/illuminate/contracts/View/View.php',
@@ -215,7 +206,6 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Database\\Console\\Migrations\\ResetCommand' => __DIR__ . '/..' . '/illuminate/database/Console/Migrations/ResetCommand.php',
         'Illuminate\\Database\\Console\\Migrations\\RollbackCommand' => __DIR__ . '/..' . '/illuminate/database/Console/Migrations/RollbackCommand.php',
         'Illuminate\\Database\\Console\\Migrations\\StatusCommand' => __DIR__ . '/..' . '/illuminate/database/Console/Migrations/StatusCommand.php',
-        'Illuminate\\Database\\Console\\SeedCommand' => __DIR__ . '/..' . '/illuminate/database/Console/SeedCommand.php',
         'Illuminate\\Database\\DatabaseManager' => __DIR__ . '/..' . '/illuminate/database/DatabaseManager.php',
         'Illuminate\\Database\\DatabaseServiceProvider' => __DIR__ . '/..' . '/illuminate/database/DatabaseServiceProvider.php',
         'Illuminate\\Database\\Eloquent\\Builder' => __DIR__ . '/..' . '/illuminate/database/Eloquent/Builder.php',
@@ -238,7 +228,6 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Database\\Eloquent\\Relations\\MorphToMany' => __DIR__ . '/..' . '/illuminate/database/Eloquent/Relations/MorphToMany.php',
         'Illuminate\\Database\\Eloquent\\Relations\\Pivot' => __DIR__ . '/..' . '/illuminate/database/Eloquent/Relations/Pivot.php',
         'Illuminate\\Database\\Eloquent\\Relations\\Relation' => __DIR__ . '/..' . '/illuminate/database/Eloquent/Relations/Relation.php',
-        'Illuminate\\Database\\Eloquent\\ScopeInterface' => __DIR__ . '/..' . '/illuminate/database/Eloquent/ScopeInterface.php',
         'Illuminate\\Database\\Eloquent\\SoftDeletes' => __DIR__ . '/..' . '/illuminate/database/Eloquent/SoftDeletes.php',
         'Illuminate\\Database\\Eloquent\\SoftDeletingScope' => __DIR__ . '/..' . '/illuminate/database/Eloquent/SoftDeletingScope.php',
         'Illuminate\\Database\\Grammar' => __DIR__ . '/..' . '/illuminate/database/Grammar.php',
@@ -273,12 +262,10 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
         'Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar' => __DIR__ . '/..' . '/illuminate/database/Schema/Grammars/SQLiteGrammar.php',
         'Illuminate\\Database\\Schema\\Grammars\\SqlServerGrammar' => __DIR__ . '/..' . '/illuminate/database/Schema/Grammars/SqlServerGrammar.php',
         'Illuminate\\Database\\Schema\\MySqlBuilder' => __DIR__ . '/..' . '/illuminate/database/Schema/MySqlBuilder.php',
-        'Illuminate\\Database\\SeedServiceProvider' => __DIR__ . '/..' . '/illuminate/database/SeedServiceProvider.php',
         'Illuminate\\Database\\Seeder' => __DIR__ . '/..' . '/illuminate/database/Seeder.php',
         'Illuminate\\Database\\SqlServerConnection' => __DIR__ . '/..' . '/illuminate/database/SqlServerConnection.php',
         'Illuminate\\Support\\AggregateServiceProvider' => __DIR__ . '/..' . '/illuminate/support/AggregateServiceProvider.php',
         'Illuminate\\Support\\Arr' => __DIR__ . '/..' . '/illuminate/support/Arr.php',
-        'Illuminate\\Support\\ClassLoader' => __DIR__ . '/..' . '/illuminate/support/ClassLoader.php',
         'Illuminate\\Support\\Collection' => __DIR__ . '/..' . '/illuminate/support/Collection.php',
         'Illuminate\\Support\\Debug\\Dumper' => __DIR__ . '/..' . '/illuminate/support/Debug/Dumper.php',
         'Illuminate\\Support\\Debug\\HtmlDumper' => __DIR__ . '/..' . '/illuminate/support/Debug/HtmlDumper.php',
@@ -441,6 +428,7 @@ class ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2
             $loader->prefixLengthsPsr4 = ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit77bd2f5cafbffe076879a91c51a865e2::$classMap;
 
         }, null, ClassLoader::class);
