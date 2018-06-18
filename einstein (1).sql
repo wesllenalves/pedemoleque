@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Jun-2018 às 19:45
+-- Generation Time: 18-Jun-2018 às 19:50
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.0.27
 
@@ -48,8 +48,7 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id`, `nomeCliente`, `email`, `senha`, `salt`, `cpf`, `dataNas`, `celular`, `telefoneFixo`, `tipoUsuario`, `dataCadas`) VALUES
 (1, 'wesllen alves de sousa', 'wesllenalves@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '$2y$10$LlVbMlVgENMGIkUU49WbD.6NSxe4uh4Zby66CE2vwaM0GuxwMHsr2', '03230944143', '1993-09-24', '61981745695', '61981745695', 'admin', '2018-05-31 20:15:08'),
-(3, 'wesllen alves de sousa', 'cliente@cliente.com', 'e10adc3949ba59abbe56e057f20f883e', '$2y$10$mF/dPEqyvfRNmH6E9Kyose/7zU0I2gT9PfxBkp9Pq6Hcp3PysN6QS', '03230944150', '2018-06-01', '61981745695', '61981745695', 'comun', '2018-06-01 01:50:24'),
-(4, 'wesllen alves de sousa', 'teste@teste.com', 'e10adc3949ba59abbe56e057f20f883e', '$2y$10$6xgPPBq3D6nqpfGF5L8YGuIjBFbA54WWZW3cIeQGT3YBOSMroa5nG', '03230944141', '1993-09-24', '61981745695', '61981745695', 'comun', '2018-06-02 11:41:08');
+(3, 'wesllen alves de sousa', 'cliente@cliente.com', 'e10adc3949ba59abbe56e057f20f883e', '$2y$10$HK.jg4eXIy.gH7dNXG3Gs.vbQw6UpTBMmkO8EniLI158lCSQLa5ja', '03230944150', '2018-06-01', '61981745695', '61981745695', 'comun', '2018-06-10 13:08:44');
 
 -- --------------------------------------------------------
 
@@ -74,8 +73,7 @@ CREATE TABLE `endereco` (
 
 INSERT INTO `endereco` (`id`, `cliente_id`, `cep`, `rua`, `bairro`, `cidade`, `estado`, `complemento`) VALUES
 (1, 1, '70645160', 'SRES Quadra 10 Bloco P', 'Cruzeiro Velho', 'Brasília', 'DF', 'Green park'),
-(3, 3, '70645160', 'SRES Quadra 10 Bloco P', 'Cruzeiro Velho', 'Brasília', 'DF', 'Green park'),
-(4, 4, '70645160', 'SRES Quadra 10 Bloco P', 'Cruzeiro Velho', 'Brasília', 'DF', 'Green park');
+(3, 3, '70645160', 'SRES Quadra 10 Bloco P', 'Cruzeiro Velho', 'Brasília', 'DF', 'Green park');
 
 -- --------------------------------------------------------
 
@@ -256,6 +254,21 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`idusers`, `nome`, `email`, `senha`, `cpf`, `dataNasc`, `dataCad`, `salt`, `role_id`, `status`) VALUES
 (2, 'wesllen alves de sousa', 'wesllenalves@gmail.com', 'MTIzNDU2', '03230944143', '1993-09-24', '2018-04-02 17:16:53', '$2y$10$PmE7iiQOPU6/tSoOHLdq.eGNCfzZGsdFGb42/M8rjd9dC5rBnEb4C', 2, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `nomeProduto` varchar(255) NOT NULL,
+  `valorTotal` decimal(10,2) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `dataVenda` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -334,6 +347,13 @@ ALTER TABLE `users`
   ADD KEY `roles_role_id` (`role_id`);
 
 --
+-- Indexes for table `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKVENDAS_IDCLIENTE` (`id_cliente`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -341,13 +361,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `fornecedor`
@@ -392,6 +412,12 @@ ALTER TABLE `users`
   MODIFY `idusers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -431,6 +457,12 @@ ALTER TABLE `recoveries`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `roles_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`idroles`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD CONSTRAINT `FKVENDAS_IDCLIENTE` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

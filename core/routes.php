@@ -13,6 +13,8 @@ $routes[] = ['/cliente/minhaconta', 'ClienteController@minhaconta'];
 $routes[] = ['/cliente/minhaconta/editar', 'ClienteController@minhacontaeditar'];
 $routes[] = ['/cliente/minhaconta/editar/enviar', 'ClienteController@minhaContaEditarEnviar'];
 $routes[] = ['/cliente/minhaconta/deletar', 'ClienteController@deletar'];
+$routes[] = ['/cliente/minhaconta/listaCompras', 'ClienteController@ListaCompras'];
+$routes[] = ['/cliente/minhaconta/comprar', 'ClienteController@comprar'];
 
 $routes[] = ['/admin', 'AdminController@index'];
 $routes[] = ['/admin/sair', 'AdminController@logout'];

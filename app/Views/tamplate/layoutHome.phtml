@@ -211,7 +211,7 @@ if (isset($_GET['acao'])) {
                                     </div>
                                     <ul class="custom-menu">
                                         <li><a href="<?php base_url("") ?>/cliente/minhaconta"><i class="fa fa-user-o"></i> Minha Conta</a></li>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i> Lista de Desejos</a></li>			
+                                        <li><a href="<?php base_url("") ?>/cliente/minhaconta/listaCompras?id=<?=$_SESSION['id']?>"><i class="fa fa-shopping-cart"></i> Lista de Compras</a></li>			
                                         <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
                                         <li><a href="?sair=sim"><i class="fa fa-unlock-alt"></i> Sair</a></li>					
                                     </ul>
@@ -286,6 +286,7 @@ if (isset($_GET['acao'])) {
                                         <div class = "shopping-cart-list">
                                         <div class = "shopping-cart-btns">
                                         <?php
+                                        $total = 0;
                                         foreach ($_SESSION['carrinho'] as $id => $qtd) {
 
                                         $dados = Produtos::with('Fornecedor')->where("id", "=", $id)->get();
@@ -296,7 +297,7 @@ if (isset($_GET['acao'])) {
                                         $valor = $dado[0]['valor'];
                                         $foto = $dado[0]['fotoProduto'];
                                         $sub = $dado[0]['valor'] * $qtd;
-                                        $total = $sub;
+                                        $total = $total + $sub;
 
                                         echo '<div class="product product-widget">
             <div class="product-thumb">

@@ -115,6 +115,18 @@ class ClienteController extends BaseController{
                 exit;
             }
     }
+    
+    public function ListaCompras($request){
+        $post = (array) $request->get;
+        $id = addslashes($post['id']);
+        print_r($id);
+    }
+    public function comprar($request){
+        $post = (array) $request->post;
+        
+        print_r($post);
+    }
+
     public function deletar($request){
         $post = (array) $request->get;
         $id = addslashes($post['id']);
